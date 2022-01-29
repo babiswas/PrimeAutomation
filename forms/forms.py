@@ -7,4 +7,12 @@ class TestForm(Form):
         description=StringField("Description")
         resourcePath=StringField("ResourcePath")
         method=StringField("Method")
+
+
+class AccountForm(Form):
+        id=StringField("TestId")
+        tags=StringField("TestTag")
+        description=StringField("Description")
+        resourcePath=StringField("ResourcePath")
+        method=StringField("Method")
             
