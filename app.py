@@ -1,8 +1,10 @@
 from Model import db
 from flask import Flask
-from Route.route import testcase
+from Route.route import testcase,home,account,enviroment
 from controller import test_views
 from controller import home_views
+from controller import account_views
+from controller import enviroment_views
 
 
 class Config:
@@ -18,6 +20,9 @@ def create_app():
    with app.app_context():
       db.create_all()
    app.register_blueprint(testcase)
+   app.register_blueprint(home)
+   app.register_blueprint(account)
+   app.register_blueprint(enviroment)
    return app
 
 if __name__=="__main__":

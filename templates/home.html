@@ -1,15 +1,68 @@
-{% block content %}
-   <div >
-        <div id="sidepanel1">
+<html>
+  <head>
+    <link rel="stylesheet" href="{{url_for('static',filename='./main.css')}}">
+  </head>
+  <body>
+      <header>
+        <center><h1>Prime API Tests</h1></center>
+      </header>
+      <div class="control">
+          {% block content %}
+          <div class="panel" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+            <center><h2>Accounts and Enviroments</h2></center>
+        </div>
+        <div id="allbot">
             <div>
-                <center>
-                    <button style="background-color:white;color:black;margin-top:15px;margin-bottom:15px;" class="btnd"><a href="{{url_for('testcase.add_box_config')}}">Test Add</a></button>
-                    <button style="background-color:white;color:black;margin-top:15px;margin-bottom:15px;" class="btnd"><a href="{{url_for('testcase.add_prime_config')}}">Test Read</a></button>
-                    <button style="background-color:white;color:black;margin-top:15px;margin-bottom:15px;" class="btnd"><a href="{{url_for('testcase.my_bots',userid=user.id)}}">Add Enviroment</a></button>
-                    <button style="background-color:white;color:black;margin-top:15px;margin-bottom:15px;" class="btnd"><a href="{{url_for('testcase.get_tasklist')}}">Task List</a></button>
-                    <button style="background-color:white;color:black;margin-top:15px;margin-bottom:15px;" class="btnd"><a href="{{url_for('testcase.landing_page')}}">Bot Home</a></button>
-                </center>
+                {% for env in enviroments%}
+                    <div class="newbot">
+                           <center>
+                            <div>
+                                <h2><a href="{{url_for('enviroment.Env_detail',envid=env.id)}}">{{env.name}}</a></h2>
+                            </div>
+                            <div>
+                                <p>
+                                    {{env.description}}
+                                </p>
+                            </div>
+                           </center>
+                    </div>
+                {% endfor %}
+                {% for acc in accounts%}
+                   <div class="newbot">
+                       <div>
+                           <p>
+                            {{acc.clientid}}
+                           </p>
+                       </div>
+                       <div>
+                           <p>
+                            {{acc.clientsecret}}
+                           </p>
+                       </div>
+                       <div>
+                           <p>
+                            {{acc.refreshtoken}}
+                           </p>
+                       </div>
+                   </div>
+                {% endfor %}
+            </div>
+            <div style="height:40px;width:40%;margin-right:30%;margin-left:30%;display:inline-block;">
+                {% if prev_url or next_url %}
+                      {% if prev_url %}
+                         <div>
+                             <button class="btnd" style="color:white;"><a href={{prev_url}}>Prev</a></button>
+                         </div>
+                      {% endif %}
+                      {% if next_url %}
+                         <div>
+                             <button class="btnd" style="color:white;"><a href={{next_url}}>Next</a></button>
+                         </div>
+                      {% endif %}
+                {% endif %}
             </div>
         </div>
-   </div>
-{% endblock %}
+          {% endblock %}
+      </div>
+  </body>
+</html>
