@@ -9,7 +9,7 @@
       <div class="control">
           {% block content %}
           <div class="panel" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-            <center><h2>Accounts and Enviroments</h2></center>
+            <center><h2>Enviroments</h2></center>
         </div>
         <div id="allbot">
             <div>
@@ -26,25 +26,6 @@
                             </div>
                            </center>
                     </div>
-                {% endfor %}
-                {% for acc in accounts%}
-                   <div class="newbot">
-                       <div>
-                           <p>
-                            {{acc.clientid}}
-                           </p>
-                       </div>
-                       <div>
-                           <p>
-                            {{acc.clientsecret}}
-                           </p>
-                       </div>
-                       <div>
-                           <p>
-                            {{acc.refreshtoken}}
-                           </p>
-                       </div>
-                   </div>
                 {% endfor %}
             </div>
             <div style="height:40px;width:40%;margin-right:30%;margin-left:30%;display:inline-block;">
