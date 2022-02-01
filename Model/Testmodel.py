@@ -65,7 +65,7 @@ class Account(db.Model):
 
 class Testdata(db.Model):
         __tablename__="testdata"
-        id=db.Column(db.Integer,nullable=False,unique=True)
+        id=db.Column(db.Integer,nullable=False,unique=True,primary_key=True)
         data=db.Column(JSON)
         testcase_id=db.Column(db.String(20),db.ForeignKey('testcase.id'))
 

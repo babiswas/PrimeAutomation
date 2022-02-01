@@ -20,7 +20,7 @@ def get_data(testid):
 
 
 @api.route('/adddata',methods=['POST'])
-def get_data():
+def set_data():
         try:
             data=request.get_json()
             testid=data["id"]
