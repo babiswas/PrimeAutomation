@@ -10,6 +10,7 @@ class Testcase(db.Model):
     method=db.Column(db.String(100),nullable=False)
     env_id=db.Column(db.Integer,db.ForeignKey('primeconfig.id'))
     acc_id=db.Column(db.Integer,db.ForeignKey('account.id'))
+    child=db.relationship('Testdata',backref='testcasedata',uselist=False)
 
     def __str__(self):
         return f"{self.id} {self.method} {self.tags}"
@@ -60,5 +61,25 @@ class Account(db.Model):
         self.clientsecret=clientsecret
         self.refreshtoken=refreshtoken
         self.env_id=envid
+
+
+class Testdata(db.Model):
+        __tablename__="testdata"
+        id=db.Column(db.Integer,nullable=False,unique=True)
+        data=db.Column(JSON)
+        testcase_id=db.Column(db.String(20),db.ForeignKey('testcase.id'))
+
+
+        def __init__(self,data,testid):
+            self.data=data
+            self.testcase_id=testid
+
+        def __str__(self):
+            return f"{self.testid}"
+
+
+
+
+
     
    
