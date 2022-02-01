@@ -1,4 +1,5 @@
 from Model import db
+from sqlalchemy.dialects.postgresql import JSON
 
 class Testcase(db.Model):
     __tablename__="testcase"
